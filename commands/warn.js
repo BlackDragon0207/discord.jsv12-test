@@ -39,7 +39,7 @@ module.exports = {
             .setColor(`#FFFFFF`)
             .addField(`경고 부여자`, message.author)
             .addField(`경고 대상`, `${user}`)
-            .addField(`경고 횟수`, `${warnings}`)
+            .addField(`이전 경고 횟수`, `${warnings}`)
             .addField(`경고 사유`, reason)
             .setFooter('경고 부여된 시간', client.user.displayAvatarURL())
             .setTimestamp()
@@ -55,7 +55,7 @@ module.exports = {
             .setColor(`#FFFFFF`)
             .addField(`경고 부여자`, message.author)
             .addField(`경고 대상`, `${user}`)
-             .addField(`경고 횟수`, `${warnings}`)
+             .addField(`이전 경고 횟수`, `${warnings}`)
             .addField(`경고 사유`, reason)
             .setFooter('경고 부여된 시간', client.user.displayAvatarURL())
             .setTimestamp()
@@ -64,3 +64,5 @@ module.exports = {
         }
     }
 }
+
+
