@@ -24,16 +24,14 @@ module.exports = {
 
       if(!reason) reason = 'Unspecified';
 
-        let warnings = db.get(`warnings_${message.guild.id}_${user.id}`);
-
-        if(warnings === null) warnings = 0;
+      let warnings = db.get(`warnings_${message.guild.id}_${user.id}`);
 
       if(warnings === 5) return message.channel.send(`${user}님께서는 5번 경고를 받으셨습니다.\n서버에서 영구밴 처리 됩니다.`);  
 
       
 
         if(warnings === null) {
-            db.set(`warnings_${message.guild.id}_${user.id}`, 1);
+            await db.set(`warnings_${message.guild.id}_${user.id}`, 1);
             user.send(`You were warned in ${message.guild.name} for the follwoing reason: \`${reason}\``)
             const warnEmbed = new Discord.MessageEmbed()
             .setAuthor("한 유저가 서버에서 경고가 부여 되었음을 알려드립니다.")
@@ -49,7 +47,7 @@ module.exports = {
         }
 
         if(warnings !== null){
-            db.add(`warnings_${message.guild.id}_${user.id}`, 1)
+            await db.add(`warnings_${message.guild.id}_${user.id}`, 1)
             user.send(`You were warned in ${message.guild.name} for the follwoing reason: \`${reason}\``)
             const warnEmbed = new Discord.MessageEmbed()
             .setAuthor("한 유저가 서버에서 경고가 부여 되었음을 알려드립니다.")
