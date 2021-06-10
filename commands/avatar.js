@@ -15,7 +15,7 @@ module.exports = {
         const embed = new Discord.MessageEmbed()
         .setTitle(`${member.username}님의 프로필`)
         .setImage(avatar)
-        .setColor("RANDOM")
+        .setColor(`#b906ec`)
 
         message.channel.send(embed);
     }
