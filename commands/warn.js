@@ -26,9 +26,7 @@ module.exports = {
 
       let warnings = db.get(`warnings_${message.guild.id}_${user.id}`);
 
-      if(warnings === null) warnings = 1;
-
-      if(warnings === 5) return message.channel.send(`${user}님께서는 5번 경고를 받으셨습니다.\n서버에서 영구밴 처리 됩니다.`);  
+      if(warnings === 5) return message.channel.send(`${user}님께서는 5번 경고를 받으셨습니다.\n관리자가 확인 후 서버에서 밴 처리 됩니다.`);  
 
         if(warnings === null) {
             db.set(`warnings_${message.guild.id}_${user.id}`, 1);
