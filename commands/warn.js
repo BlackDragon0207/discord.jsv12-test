@@ -24,9 +24,11 @@ module.exports = {
 
       if(!reason) reason = 'Unspecified';
 
-      let warnings = db.get(`warnings_${message.guild.id}_${user.id}`);
+      let warnings = await db.get(`warnings_${message.guild.id}_${user.id}`);
 
-      if(warnings === 5) return message.channel.send(`${user}님께서는 5번 경고를 받으셨습니다.\n관리자가 확인 후 서버에서 밴 처리 됩니다.`);  
+      if(warnings === 5) return message.channel.send(`${user}님께서는 5번 경고를 받으셨습니다.\n서버에서 영구밴 처리 됩니다.`);  
+
+      
 
         if(warnings === null) {
             db.set(`warnings_${message.guild.id}_${user.id}`, 1);
@@ -37,7 +39,7 @@ module.exports = {
             .setColor(`#FFFFFF`)
             .addField(`경고 부여자`, message.author)
             .addField(`경고 대상`, `${user}`)
-            .addField(`경고 횟수`, `${warnings}`)
+            .addField(`이전 경고 횟수`, `${warnings}`)
             .addField(`경고 사유`, reason)
             .setFooter('경고 부여된 시간', client.user.displayAvatarURL())
             .setTimestamp()
@@ -53,7 +55,7 @@ module.exports = {
             .setColor(`#FFFFFF`)
             .addField(`경고 부여자`, message.author)
             .addField(`경고 대상`, `${user}`)
-            .addField(`경고 횟수`, `${warnings}`)
+             .addField(`이전 경고 횟수`, `${warnings}`)
             .addField(`경고 사유`, reason)
             .setFooter('경고 부여된 시간', client.user.displayAvatarURL())
             .setTimestamp()
