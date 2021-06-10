@@ -43,7 +43,7 @@ module.exports = {
             .addField(`경고 사유`, reason)
             .setFooter('경고 부여된 시간', client.user.displayAvatarURL())
             .setTimestamp()
-            await message.channel.send(warnEmbed)
+            message.channel.send(warnEmbed)
         }
 
         if(warnings !== null){
@@ -59,7 +59,7 @@ module.exports = {
             .addField(`경고 사유`, reason)
             .setFooter('경고 부여된 시간', client.user.displayAvatarURL())
             .setTimestamp()
-            await message.channel.send(warnEmbed);
+            message.channel.send(warnEmbed);
 
         }
     }
