@@ -24,7 +24,7 @@ module.exports = {
 
       if(!reason) reason = 'Unspecified';
 
-        let warnings = await db.get(`warnings_${message.guild.id}_${user.id}`);
+        let warnings = db.get(`warnings_${message.guild.id}_${user.id}`);
 
         if(warnings === null) warnings = 0;
 
