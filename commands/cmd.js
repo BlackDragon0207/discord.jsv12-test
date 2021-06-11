@@ -17,7 +17,7 @@ async run (client, message, args) {
         try {
             const result = eval(input)
 
-            const embed = new MessageEmbed()
+            const embed = new Discord.MessageEmbed()
                 .setTitle("실행 완료")
                 .setDescription(`⌨Input\`\`\`md\n${input}\n\`\`\`\n🖥Output\`\`\`js\n${result}\n\`\`\``)
                 
@@ -26,7 +26,7 @@ async run (client, message, args) {
             message.channel.send(embed)
         } catch (e) {
             console.error(e)
-            const embed = new MessageEmbed()
+            const embed = new Discord.MessageEmbed()
                 .setTitle('에러')
                 .setDescription(`⌨Input\`\`\`md\n${input}\n\`\`\`\n🖥Output\`\`\`js\n${e.message}\n\`\`\``)
                 .setColor('RED')
