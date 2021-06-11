@@ -16,7 +16,7 @@ module.exports = {
         .setColor(`#111010`)
         .setThumbnail(client.user.displayAvatarURL())
         .setAuthor(`[ BlackDragon Community Bot command List #1 ]`)
-        .addField(`${settings} **봇 개발자 전용 명령어**`, '`해당 봇을 개발한 유저만 사용이 가능합니다`')
+        .addField(`${settings} **봇 개발자 전용 명령어**`, '`해당 봇을 개발한 유저만 사용이 가능합니다\n해당 cmd명령어의 코드는 놀욘#0132님에게 저작권이 있습니다`')
         .addField('`D_cmd | D_node`', 'node를 실행하는 명령어')
         .setTimestamp()
 
