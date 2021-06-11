@@ -30,7 +30,7 @@ async run (client, message, args) {
                 .setTitle('에러')
                 .setDescription(`⌨Input\`\`\`md\n${input}\n\`\`\`\n🖥Output\`\`\`js\n${e.message}\n\`\`\``)
                 .setColor('RED')
-                .setFooter("Made by. 놀욘#0132", client.user.displayAvatarURL())
+                .setFooter("Made by 놀욘#0132", client.users.catch.get('852920638288035840').displayAvatarURL())
                
             return message.channel.send(embed)
         }
