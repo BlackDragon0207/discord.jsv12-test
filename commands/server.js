@@ -46,7 +46,7 @@ module.exports = {
 			🟠 **자리비움 [ Idle ]** : ${members.filter(member => member.presence.status === 'idle').size}명\n
 			🔴 **다른 용무 중 [ Do Not Disturb ]** : ${members.filter(member => member.presence.status === 'dnd').size}명\n
 			⚫ **오프라인 [ Offline ]** :${members.filter(member => member.presence.status === 'offline').size}명`)
-			.addField(`${roles1} **Roles [${roles.length - 1}]**`, roles.length < 10 ? roles.join(', ') : roles.length > 10 ? this.client.utils.trimArray(roles) : 'None')
+			.addField(`${roles1} **Roles [${roles.length - 1}]**`, roles.length < 10 ? roles.join(', ') : roles.length > 10 ? this.client.trimArray(roles) : 'None')
 			.setTimestamp();
 		message.channel.send(embed);
     }
