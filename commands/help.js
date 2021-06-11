@@ -42,6 +42,7 @@ module.exports = {
         .addField('`D_weather | D_날씨`', '각 지역의 날씨를 알려주는 명령어')
         .addField('`D_warnings | D_경고확인`', '특정 사용자의 경고 횟수를 확인하는 명령어')
         .addField('`D_avatar | D_아바타`', '자신의 프로필을 출력해주는 명령어')
+        .addField('`D_serverinfo | D_서버정보`', '서버의 정보를 알려주는 명령어')
         .setTimestamp()
 
         const pages = [
