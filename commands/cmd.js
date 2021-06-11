@@ -34,3 +34,5 @@ async run (client, message, args) {
                
             return message.channel.send(embed)
         }
+    }
+}
