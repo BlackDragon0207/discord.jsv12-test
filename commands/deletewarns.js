@@ -19,8 +19,6 @@ module.exports = {
 
         if(user.id === message.author.id) return message.channel.send('You can\'t clear your own warnings');
 
-        
-        let warnings = db.get(`warnings_${message.guild.id}_${user.id}`);
 
         db.delete(`warnings_${message.guild.id}_${user.id}`);
 
