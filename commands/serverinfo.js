@@ -37,8 +37,6 @@ module.exports = {
 			${discord} **일반 이모티콘 [ Regular Emoji Count ]** : ${emojis.filter(emoji => !emoji.animated).size}개\n
 			${discord2} **움직이는 이모티콘 [ Animated Emoji Count ]** : ${emojis.filter(emoji => emoji.animated).size}개\n
 			✅ **서버 멤버 [ Member Count ]** : ${message.guild.memberCount}명\n
-			👥 **봇 제외 인원 [ Humans ]** : ${members.filter(member => !member.user.bot).size}명\n
-			💾 **봇 갯수 [ Bots ]** : ${members.filter(member => member.user.bot).size}개\n
 			💬 **채팅 채널 [ Text Channels ]** : ${channels.filter(channel => channel.type === 'text').size}개\n
 			🔊 **음성 채널 [ Voice Channels ]** : ${channels.filter(channel => channel.type === 'voice').size}개\n
 			${ne2} **부스트 갯수 [ Boost Count ]** : ${message.guild.premiumSubscriptionCount || '0'}개\n
@@ -46,7 +44,7 @@ module.exports = {
 			🟠 **자리비움 [ Idle ]** : ${members.filter(member => member.presence.status === 'idle').size}명\n
 			🔴 **다른 용무 중 [ Do Not Disturb ]** : ${members.filter(member => member.presence.status === 'dnd').size}명\n
 			⚫ **오프라인 [ Offline ]** :${members.filter(member => member.presence.status === 'offline').size}명`)
-			.addField(`${roles1} **Roles [${roles.length - 1}]**`, roles.length < 10 ? roles.join(', ') : roles.length > 10 ? client(roles) : 'None')
+			.setFooter('스테이터스 확인 시간', client.user.displayAvatarURL())
 			.setTimestamp();
 		message.channel.send(embed);
     }
