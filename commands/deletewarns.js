@@ -9,7 +9,7 @@ module.exports = {
 
 
     async run (client, message, args){
-        if(!message.member.hasPermission("MANAGE_SERVER")) return message.channel.send('You can\'t use that.');
+        if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send('You can\'t use that.');
 
         const user = message.mentions.users.first() || message.guild.members.cache.get(args[0]);
 
@@ -19,11 +19,16 @@ module.exports = {
 
         if(user.id === message.author.id) return message.channel.send('You can\'t clear your own warnings');
 
-        if(warnings === null) return message.channel.send(`**${user.username}님의 경고가 취소 되었습니다.**`);
-
+        
+        let warnings = db.get(`warnings_${message.guild.id}_${user.id}`);
 
         db.delete(`warnings_${message.guild.id}_${user.id}`);
 
-        message.channel.send('경고 최소 완료')
+        setTimeout (() => {
+            const warnEmbed = new Discord.MessageEmbed()
+            .setColor(`#2bfa47`)
+            .setDescription(`${user.username}님의 경고가 취소 되었습니다 `)
+            message.channel.send(warnEmbed)
+        }, 1000)
     }
 }
