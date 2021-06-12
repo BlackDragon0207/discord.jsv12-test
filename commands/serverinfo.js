@@ -24,7 +24,7 @@ module.exports = {
 		const roles1 = client.emojis.cache.get('852175098453819412')
 
 		const embed = new Discord.MessageEmbed()
-			.setDescription(`**__${message.guild.name}__**서버 스테이터스`)
+		    .setAuthor(`[ ${message.guild.name} 서버 스테이터스 ]`, client.user.displayAvatarURL)
 			.setColor('#0c0c0c')
 			.setThumbnail(message.guild.iconURL({ dynamic: true }))
 			.setDescription(`${name} **서버 이름 [ Server Name ]** : **${message.guild.name}**\n
