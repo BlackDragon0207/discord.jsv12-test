@@ -40,7 +40,6 @@ module.exports = {
 			💬 **채팅 채널 [ Text Channels ]** : ${channels.filter(channel => channel.type === 'text').size}개\n
 			🔊 **음성 채널 [ Voice Channels ]** : ${channels.filter(channel => channel.type === 'voice').size}개\n
 			${ne2} **부스트 갯수 [ Boost Count ]** : ${message.guild.premiumSubscriptionCount || '0'}개`)
-			.addField(`${roles1} **Roles [${roles.length - 1}]**`, roles.length < 10 ? roles.join(', ') : roles.length > 10 ? client(roles) : 'None')
 			.setFooter('스테이터스 확인 시간', client.user.displayAvatarURL())
 			.setTimestamp();
 		message.channel.send(embed);
