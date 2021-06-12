@@ -10,10 +10,7 @@ module.exports = {
     async run (client, message, args) {
 
     const roles = message.guild.roles.cache.sort((a, b) => b.position - a.position).map(role => role.toString());
-		const members = message.guild.members.cache;
-		const channels = message.guild.channels.cache;
 		const emojis = message.guild.emojis.cache;
-
 		const ID = client.emojis.cache.get('777042273350713354')
 		const name = client.emojis.cache.get('776772936748630037')
 		const owner = client.emojis.cache.get('714091211392155699')
@@ -21,8 +18,7 @@ module.exports = {
 		const ne2 = client.emojis.cache.get('772413074228903956')
 		const discord = client.emojis.cache.get('777075390484447252')
 		const discord2 = client.emojis.cache.get('775708755664961556')
-		const roles1 = client.emojis.cache.get('852175098453819412')
-
+		
 		const embed = new Discord.MessageEmbed()
 		    .setAuthor(`[ ${message.guild.name} 서버 스테이터스 ]`, client.user.displayAvatarURL)
 			.setColor('#0c0c0c')
