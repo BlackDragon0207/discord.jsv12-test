@@ -2,6 +2,10 @@ const Discord = require('discord.js');
 
 const client = new Discord.Client();
 
+const discordButtons = require("discord-buttons-plugin");
+
+const buttonClient = new discordButtons(client)
+
 const { token, default_prefix } = require('./config.json');
 
 const { readdirSync } = require('fs');
@@ -31,6 +35,44 @@ client.on('ready', () => {
     console.log('I am ready');
     client.user.setActivity(`BlackDragon Community`, { type: "COMPETING"})
 });
+
+client.on("message", (message) => {
+	if(message.content === "D_button") { 
+	/* Generate a Cute Embed :3 */
+	 const embed = new Discord.MessageEmbed() 
+	 .setTitle("당신은 이 서버가 좋은 서버라고 생각하시나요?")
+	 .setColor("GREEN");
+ 
+    /* Generate 1st Button with "Yes" lable on it */
+	 const button1 = new buttonClient.MessageButton()
+	 .setLabel("Yes")
+	 .setStyle("green")
+	 .setID("yes")
+
+   /* Generate 2nd Button with "No" label on it */
+	 const button2 = new buttonClient.MessageButton()
+	 .setLabel("No")
+	 .setStyle("red")
+	 .setID("no")
+
+   /* Generate 3rd Link Button */
+   const button3 = new buttonClient.MessageButton()
+   .setLabel("Join me on OnlyFans")
+   .setURL("https://withwin.in/dbd")
+
+     
+     /* Send Message with button */
+     buttonClient.send(null, { channel: message.channel.id, embed, buttons: [ [button1, button2], [button3] ]})
+ }
+})
+
+
+/* Listen to buttons event with their ID */
+buttonClient.on("yes", (inta) => inta.message.reply("고마워요! :)"))
+buttonClient.on("no", (inta) => {
+	inta.message.delete()
+	inta.message.reply("더 좋은 서버가 되도록 노력하겠습니다...!!")
+})
 
 
 client.on("message", async message => {
