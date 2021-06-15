@@ -29,6 +29,7 @@ module.exports = {
         .addField('`D_ban | D_밴`', '특정 사용자를 서버에서 차단 시키는 명령어')
         .addField('`D_warn | D_경고`', '특정 사용자에게 경고를 부여하는 명령어')
         .addField('`D_deletewarns | D_경고취소`', '특정 사용자의 경고를 취소하는 명령어')
+        .addField('`D_resetwarns | D_경고초기화`', '특정 사용자의 경고를 초기화 시키는 명령어')
         .addField('`D_clear | D_청소`', '채팅 내용을 삭제하는 명령어')
         .setTimestamp()
 
