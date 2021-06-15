@@ -26,9 +26,8 @@ module.exports = {
 
       let warnings = db.get(`warnings_${message.guild.id}_${user.id}`);
 
-      if(warnings === 5) return message.channel.send(`${user}님께서는 5번 경고를 받으셨습니다.\n서버에서 영구밴 처리 됩니다.`);  
-
       if(warnings === null) warnings = 0;
+
 //=======
       if(warnings !== 0){
         setTimeout (() => {
@@ -51,15 +50,16 @@ module.exports = {
         }, 1000)
     }
 
-    if(warnings === 4){
+    if(warnings === 3){
         setTimeout (() => {
-            db.set(`warnings_${message.guild.id}_${user.id}`, 1)
+            db.set(`warnings_${message.guild.id}_${user.id}`, 4)
             const warnEmbed = new Discord.MessageEmbed()
             .setColor(`#e21717`)
             .setDescription(`${user.username}님 앞으로 경고를 한 번 더 받으시면 서버에서 영구 밴 됩니다`)
             message.channel.send(warnEmbed)
         }, 2500)
     }
+
     //======
       setTimeout (() => {
             user.send(`You were warned in ${message.guild.name} for the follwoing reason: \`${reason}\``)
@@ -76,5 +76,6 @@ module.exports = {
         }, 1500)
         }
     }
+
 
 
