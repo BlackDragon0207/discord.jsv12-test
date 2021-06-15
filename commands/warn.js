@@ -8,7 +8,7 @@ module.exports = {
   description: "Warn a member",
 
   async run (client, message, args) {
-      if(!message.member.hasPermission("MANAGE_SERVER")) return message.channel.send('You can\'t use that');
+      if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send('You can\'t use that');
 
       const user = message.mentions.users.first() || message.guild.members.cache.get(args[0]);
 
@@ -28,39 +28,53 @@ module.exports = {
 
       if(warnings === 5) return message.channel.send(`${user}님께서는 5번 경고를 받으셨습니다.\n서버에서 영구밴 처리 됩니다.`);  
 
-      
+      if(warnings === null) warnings = 0;
+//=======
+      if(warnings !== 0){
+        setTimeout (() => {
+            db.add(`warnings_${message.guild.id}_${user.id}`, 1)
+            const warnEmbed = new Discord.MessageEmbed()
+            .setColor(`#e21717`)
+            .setAuthor("경고 부여가 완료 되었습니다")
+            .setDescription(`${user.username}님의 이전 경고 | ${warnings}`)
+            message.channel.send(warnEmbed)
+        }, 1000) 
+    } else 
+        { 
+        setTimeout (() => {
+            db.set(`warnings_${message.guild.id}_${user.id}`, 1)
+            const warnEmbed = new Discord.MessageEmbed()
+            .setColor(`#e21717`)
+            .setAuthor("경고 부여가 완료 되었습니다")
+            .setDescription(`${user.username}님의 이전 경고 | 0`)
+            message.channel.send(warnEmbed)
+        }, 1000)
+    }
 
-        if(warnings === null) {
-            await db.set(`warnings_${message.guild.id}_${user.id}`, 1);
+    if(warnings === 4){
+        setTimeout (() => {
+            db.set(`warnings_${message.guild.id}_${user.id}`, 1)
+            const warnEmbed = new Discord.MessageEmbed()
+            .setColor(`#e21717`)
+            .setDescription(`${user.username}님 앞으로 경고를 한 번 더 받으시면 서버에서 영구 밴 됩니다`)
+            message.channel.send(warnEmbed)
+        }, 2500)
+    }
+    //======
+      setTimeout (() => {
             user.send(`You were warned in ${message.guild.name} for the follwoing reason: \`${reason}\``)
             const warnEmbed = new Discord.MessageEmbed()
-            .setAuthor("한 유저가 서버에서 경고가 부여 되었음을 알려드립니다.")
+            .setAuthor(`${user.username}님의 경고 내용`)
             .setThumbnail(user.displayAvatarURL())
-            .setColor(`#FFFFFF`)
+            .setColor(`#e21717`)
             .addField(`경고 부여자`, message.author)
             .addField(`경고 대상`, `${user}`)
-            .addField(`이전 경고 횟수`, `${warnings}`)
             .addField(`경고 사유`, reason)
             .setFooter('경고 부여된 시간', client.user.displayAvatarURL())
             .setTimestamp()
-            await message.channel.send(warnEmbed)
-        }
-
-        if(warnings !== null){
-            await db.add(`warnings_${message.guild.id}_${user.id}`, 1)
-            user.send(`You were warned in ${message.guild.name} for the follwoing reason: \`${reason}\``)
-            const warnEmbed = new Discord.MessageEmbed()
-            .setAuthor("한 유저가 서버에서 경고가 부여 되었음을 알려드립니다.")
-            .setThumbnail(user.displayAvatarURL())
-            .setColor(`#FFFFFF`)
-            .addField(`경고 부여자`, message.author)
-            .addField(`경고 대상`, `${user}`)
-             .addField(`이전 경고 횟수`, `${warnings}`)
-            .addField(`경고 사유`, reason)
-            .setFooter('경고 부여된 시간', client.user.displayAvatarURL())
-            .setTimestamp()
-            await message.channel.send(warnEmbed);
-
+            message.channel.send(warnEmbed)
+        }, 1500)
         }
     }
-}
+
+
