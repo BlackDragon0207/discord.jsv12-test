@@ -60,6 +60,16 @@ module.exports = {
         }, 2500)
     }
 
+    if(warnings === 4){
+        setTimeout (() => {
+            db.set(`warnings_${message.guild.id}_${user.id}`, 5)
+            const warnEmbed = new Discord.MessageEmbed()
+            .setColor(`#e21717`)
+            .setDescription(`${user.username}님께서 경고 5가 누적 되었습니다.\n관리자가 확인 후 서버에서 밴 처리 됩니다.`)
+            message.channel.send(warnEmbed)
+        }, 2500)
+    }
+
     //======
       setTimeout (() => {
             user.send(`You were warned in ${message.guild.name} for the follwoing reason: \`${reason}\``)
