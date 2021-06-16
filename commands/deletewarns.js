@@ -20,7 +20,7 @@ module.exports = {
         if(user.id === message.author.id) return message.channel.send('You can\'t clear your own warnings');
 
 
-        db.delete(`warnings_${message.guild.id}_${user.id}`);
+            db.add(`warnings_${message.guild.id}_${user.id}`, -1)
 
         setTimeout (() => {
             const warnEmbed = new Discord.MessageEmbed()
