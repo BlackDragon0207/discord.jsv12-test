@@ -34,8 +34,7 @@ module.exports = {
             db.add(`warnings_${message.guild.id}_${user.id}`, 1)
             const warnEmbed = new Discord.MessageEmbed()
             .setColor(`#e21717`)
-            .setAuthor("경고 부여가 완료 되었습니다")
-            .setDescription(`${user.username}님의 이전 경고 | ${warnings}`)
+            .setDescription(`${user.username}님에게 경고 부여 되었습니다`)
             message.channel.send(warnEmbed)
         }, 1000) 
     } else 
@@ -44,8 +43,7 @@ module.exports = {
             db.set(`warnings_${message.guild.id}_${user.id}`, 1)
             const warnEmbed = new Discord.MessageEmbed()
             .setColor(`#e21717`)
-            .setAuthor("경고 부여가 완료 되었습니다")
-            .setDescription(`${user.username}님의 이전 경고 | 0`)
+            .setDescription(`${user.username}님에게 경고 부여 되었습니다`)
             message.channel.send(warnEmbed)
         }, 1000)
     }
@@ -62,6 +60,7 @@ module.exports = {
 
     if(warnings === 4){
         setTimeout (() => {
+            user.send(`경고가 5 누적 되셨습니다.\n${message.guild.name}서버에서 영구밴 처리 됩니다.`)
             db.set(`warnings_${message.guild.id}_${user.id}`, 5)
             const warnEmbed = new Discord.MessageEmbed()
             .setColor(`#e21717`)
@@ -72,7 +71,6 @@ module.exports = {
 
     //======
       setTimeout (() => {
-            user.send(`You were warned in ${message.guild.name} for the follwoing reason: \`${reason}\``)
             const warnEmbed = new Discord.MessageEmbed()
             .setAuthor(`${user.username}님의 경고 내용`)
             .setThumbnail(user.displayAvatarURL())
