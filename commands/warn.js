@@ -31,7 +31,7 @@ module.exports = {
 //=======
       if(warnings !== 0){
         setTimeout (() => {
-            db.add(`warnings_${message.guild.id}_${user.id}`, 1)
+            db.set(`warnings_${message.guild.id}_${user.id}`, 1)
             const warnEmbed = new Discord.MessageEmbed()
             .setColor(`#e21717`)
             .setDescription(`${user.username}님에게 경고 부여 되었습니다`)
@@ -40,7 +40,7 @@ module.exports = {
     } else 
         { 
         setTimeout (() => {
-            db.set(`warnings_${message.guild.id}_${user.id}`, 1)
+            db.add(`warnings_${message.guild.id}_${user.id}`, 1)
             const warnEmbed = new Discord.MessageEmbed()
             .setColor(`#e21717`)
             .setDescription(`${user.username}님에게 경고 부여 되었습니다`)
