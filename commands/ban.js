@@ -34,7 +34,7 @@ module.exports = {
         .setThumbnail(member.user.displayAvatarURL())
         .addField('차단된 사용자', member)
         .addField('차단한 관리자', message.author)
-        .addField('차단된 이유', reason)
+        .addField('차단된 이유', banReason)
         .setFooter('차단된 시간', client.user.displayAvatarURL())
         .setTimestamp()
 
