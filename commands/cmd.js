@@ -20,7 +20,8 @@ async run (client, message, args) {
             const embed = new Discord.MessageEmbed()
                 .setTitle("실행 완료")
                 .setDescription(`⌨Input\`\`\`md\n${input}\n\`\`\`\n🖥Output\`\`\`js\n${result}\n\`\`\``)
-                .setColor('GREEN')
+                
+                .setColor(`#111010`)
                 .setAuthor('Made by 놀욘#0132','https://cdn.discordapp.com/attachments/820186973624074240/852820765887299594/086dbed89b457be2.png')
             message.channel.send(embed)
         } catch (e) {
@@ -29,7 +30,7 @@ async run (client, message, args) {
                 .setTitle('에러')
                 .setDescription(`⌨Input\`\`\`md\n${input}\n\`\`\`\n🖥Output\`\`\`js\n${e.message}\n\`\`\``)
                 .setColor('RED')
-                .setFooter("Made by 놀욘#0132", client.users.cache.get('616570697875193866').displayAvatarURL())
+                .setFooter("Made by 놀욘#0132", client.users.cache.get('852920638288035840').displayAvatarURL())
                
             return message.channel.send(embed)
         }
