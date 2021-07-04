@@ -1,5 +1,6 @@
 const pagination = require('discord.js-pagination');
 const Discord = require('discord.js');
+const { inspect } = require('util')
 
 module.exports = {
     name: "cmd",
