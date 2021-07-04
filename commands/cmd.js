@@ -7,7 +7,6 @@ module.exports = {
     description: "node start",
 
 async run (client, message, args) {
-
     if(!message.author.id == ['435800525389430804','616570697875193866','690504046905393182']) return message.reply('당신은 개발자가 아닙니다.')
 
         const input = args.join(' ')
@@ -15,23 +14,24 @@ async run (client, message, args) {
 
         // Actual Eval
         try {
-            const result = eval(input)
+            const evaluated = eval(input)
+            const result = inspect(evaluated, { depth: 0 })
 
-            const embed = new Discord.MessageEmbed()
+            const embed = new MessageEmbed()
                 .setTitle("실행 완료")
                 .setDescription(`⌨Input\`\`\`md\n${input}\n\`\`\`\n🖥Output\`\`\`js\n${result}\n\`\`\``)
                 
-                .setColor(`#111010`)
-                .setAuthor('Made by 놀욘#0132','https://cdn.discordapp.com/attachments/820186973624074240/852820765887299594/086dbed89b457be2.png')
+                .setColor('GREEN')
+                .setFooter("저작권 소유: 놀욘#0132 comjun04#0001", client.user.displayAvatarURL())
             message.channel.send(embed)
         } catch (e) {
             console.error(e)
-            const embed = new Discord.MessageEmbed()
+            client.channels.cache.get('853231576141529108').send('[ERROR] '+e)
+            const embed = new MessageEmbed()
                 .setTitle('에러')
                 .setDescription(`⌨Input\`\`\`md\n${input}\n\`\`\`\n🖥Output\`\`\`js\n${e.message}\n\`\`\``)
                 .setColor('RED')
-                .setFooter("Made by 놀욘#0132", client.users.cache.get('852920638288035840').displayAvatarURL())
-               
+                .setFooter("저작권 소유: 놀욘#0132 comjun04#0001", client.user.displayAvatarURL())
             return message.channel.send(embed)
         }
     }
