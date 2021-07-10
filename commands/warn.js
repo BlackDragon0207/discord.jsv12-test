@@ -68,6 +68,7 @@ if(warnings === null) {
     }
 
     //======
+    if(warnings === 0) {
       setTimeout (() => {
             const warnEmbed = new Discord.MessageEmbed()
             .setAuthor(`${user.username}님의 경고 내용`)
@@ -76,12 +77,76 @@ if(warnings === null) {
             .addField(`경고 부여자`, message.author)
             .addField(`경고 대상`, `${user}`)
             .addField(`경고 사유`, reason)
+            .addField(`경고 횟수`, `1회`)
             .setFooter('경고 부여된 시간', client.user.displayAvatarURL())
             .setTimestamp()
             message.channel.send(warnEmbed)
         }, 1500)
-        }
     }
 
+        if(warnings === 1) {
+            setTimeout (() => {
+                  const warnEmbed = new Discord.MessageEmbed()
+                  .setAuthor(`${user.username}님의 경고 내용`)
+                  .setThumbnail(user.displayAvatarURL())
+                  .setColor(`#e21717`)
+                  .addField(`경고 부여자`, message.author)
+                  .addField(`경고 대상`, `${user}`)
+                  .addField(`경고 사유`, reason)
+                  .addField(`경고 횟수`, `2회`)
+                  .setFooter('경고 부여된 시간', client.user.displayAvatarURL())
+                  .setTimestamp()
+                  message.channel.send(warnEmbed)
+              }, 1500)
+        }
 
+      if(warnings === 2) {
+        setTimeout (() => {
+              const warnEmbed = new Discord.MessageEmbed()
+              .setAuthor(`${user.username}님의 경고 내용`)
+              .setThumbnail(user.displayAvatarURL())
+              .setColor(`#e21717`)
+              .addField(`경고 부여자`, message.author)
+              .addField(`경고 대상`, `${user}`)
+              .addField(`경고 사유`, reason)
+              .addField(`경고 횟수`, `3회`)
+              .setFooter('경고 부여된 시간', client.user.displayAvatarURL())
+              .setTimestamp()
+              message.channel.send(warnEmbed)
+          }, 1500)
+        }
+        
+          if(warnings === 3) {
+            setTimeout (() => {
+                  const warnEmbed = new Discord.MessageEmbed()
+                  .setAuthor(`${user.username}님의 경고 내용`)
+                  .setThumbnail(user.displayAvatarURL())
+                  .setColor(`#e21717`)
+                  .addField(`경고 부여자`, message.author)
+                  .addField(`경고 대상`, `${user}`)
+                  .addField(`경고 사유`, reason)
+                  .addField(`경고 횟수`, `4회`)
+                  .setFooter('경고 부여된 시간', client.user.displayAvatarURL())
+                  .setTimestamp()
+                  message.channel.send(warnEmbed)
+              }, 1500)
+            }
 
+              if(warnings === 4) {
+                setTimeout (() => {
+                      const warnEmbed = new Discord.MessageEmbed()
+                      .setAuthor(`${user.username}님의 경고 내용`)
+                      .setThumbnail(user.displayAvatarURL())
+                      .setColor(`#e21717`)
+                      .addField(`경고 부여자`, message.author)
+                      .addField(`경고 대상`, `${user}`)
+                      .addField(`경고 사유`, reason)
+                      .addField(`경고 횟수`, `5회`)
+                      .setFooter('경고 부여된 시간', client.user.displayAvatarURL())
+                      .setTimestamp()
+                      message.channel.send(warnEmbed)
+                  }, 1500)
+              }
+            }
+        }
+      
