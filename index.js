@@ -84,7 +84,7 @@ client.on('guildMemberUpdate', member=>{
     
  const ch = client.channels.cache.get('864491455343099934')
       
- if(!member.roles.cache.get('835092380155772959')) return ch.send(MemberShip) //유튜브 멤버쉽 가입할떄 보내는 메시지
+ if(!member.roles.cache.get('835092380155772958')) return ch.send(MemberShip) //유튜브 멤버쉽 가입할떄 보내는 메시지
    
 })
 
