@@ -74,6 +74,21 @@ buttonClient.on("no", (inta) => {
 	inta.message.reply("더 좋은 서버가 되도록 노력하겠습니다...!!")
 })
 
+client.on('guildMemberUpdate', member=>{
+    const MemberShip = new Discord.MessageEmbed() //멤버쉽 있음
+    .setTitle('흑룡유튜브 멤버십 가입 완료')
+    .setColor("#ff7575")
+    .setDescription(`\n${member.user.tag}님 멤버십 가입 감사합니다!`)    
+    .setThumbnail('https://cdn.discordapp.com/attachments/663692632635080734/864492891514601502/youtube.png')
+    .setTimestamp()
+    
+ const ch = client.channels.cache.get('864491455343099934')
+      
+ if(!member.roles.cache.get('835092380155772959')) return ch.send(MemberShip) //유튜브 멤버쉽 가입할떄 보내는 메시지
+   
+})
+
+
 
 client.on("message", async message => {
 
