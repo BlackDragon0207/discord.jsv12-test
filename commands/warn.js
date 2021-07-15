@@ -26,6 +26,8 @@ module.exports = {
 
       let warnings = db.get(`warnings_${message.guild.id}_${user.id}`);
 
+      if(warnings === null) warnings = 0;
+
 //=======
 if(warnings === null) {
         setTimeout (() => {
