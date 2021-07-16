@@ -1,22 +1,15 @@
 const Discord = require('discord.js');
-
 const client = new Discord.Client();
-
 const discordButtons = require("discord-buttons-plugin");
-
 const buttonClient = new discordButtons(client)
-
 const { token, default_prefix } = require('./config.json');
-
 const { readdirSync } = require('fs');
-
 const { join } = require('path');
-
 const config = require('./config.json');
 client.config = config;
-
 const db = require('quick.db');
-
+const message = [' ']
+let current = 1;
 
 
 client.commands= new Discord.Collection();
@@ -33,7 +26,16 @@ client.on("error", console.error);
 
 client.on('ready', () => {
     console.log('I am ready');
-    client.user.setActivity(`BlackDragon Community`, { type: "COMPETING"})
+
+    setInterval(() => {
+        if(message[current]){
+            client.user.setActivity(`BlackDragon Community`, { type: "COMPETING"})
+        current++;
+        }else{
+            current = 0;
+            client.user.setActivity(`Community Member | ${client.guilds.cache.get("436048224617365524").members.size}`, { type: "PLAYING"})
+        }
+    }, 5*1500)
 });
 
 client.on("message", (message) => {
