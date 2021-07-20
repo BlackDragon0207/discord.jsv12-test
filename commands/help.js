@@ -18,6 +18,7 @@ module.exports = {
         .setAuthor(`[ BlackDragon Community Bot command List #1 ]`)
         .addField(`${settings} **봇 개발자 전용 명령어**`, '`해당 봇을 개발한 유저만 사용이 가능합니다\n해당 cmd명령어의 코드는 놀욘#0132님에게 저작권이 있습니다`')
         .addField('`D_cmd | D_node`', 'node를 실행하는 명령어')
+        .addField('`D_reload | D_리로드`', '수정한 코드를 리로드 할 때 쓰는 명령어')
         .setTimestamp()
 
         const a = new Discord.MessageEmbed()
@@ -31,6 +32,8 @@ module.exports = {
         .addField('`D_deletewarns | D_경고취소`', '특정 사용자의 경고를 취소하는 명령어')
         .addField('`D_resetwarns | D_경고초기화`', '특정 사용자의 경고를 초기화 시키는 명령어')
         .addField('`D_clear | D_청소`', '채팅 내용을 삭제하는 명령어')
+        .addField('`D_mute | D_뮤트`', '유저를 뮤트 시키는 명령어')
+        .addField('`D_unmute | D_언뮤트`', '유저의 뮤트를 해제 시키는 명령어')
         .setTimestamp()
 
         const b = new Discord.MessageEmbed()
