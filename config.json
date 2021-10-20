@@ -2,6 +2,5 @@
     "token": "TOKEN",
     "everyoneMention": false,
     "hostedBy": true,
-    "default_prefix": "D_",
-    "mongoose": "BlackDragon"
+    "default_prefix": "D_"
 }
