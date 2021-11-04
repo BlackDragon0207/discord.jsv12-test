@@ -1,6 +1,4 @@
 {
     "token": "TOKEN",
-    "everyoneMention": false,
-    "hostedBy": true,
     "default_prefix": "D_"
 }
